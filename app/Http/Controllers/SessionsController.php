@@ -58,7 +58,7 @@ class SessionsController extends Controller
 
 //        return redirect()->home();
 
-        return redirect()->admin();
+//        return redirect()->admin();
     }
 
     /**

@@ -7,12 +7,13 @@ use App\Repositories\Posts;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show']);
+//        $this->middleware('auth')->except(['index', 'show']); come back here
     }
     
     //php artisan make:model Post -mc
@@ -61,6 +62,14 @@ class PostsController extends Controller
     // need to move else where
     public function admindash()
     {
+//        exit('here');
+
+        if (!Auth::check())
+        {
+//            exit('here');
+            return view('sessions.create');
+
+        }
         return view('admin.dash');
     }
 

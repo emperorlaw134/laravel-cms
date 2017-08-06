@@ -95,3 +95,5 @@ Route::get('about', function()
 {
     return view('about');
 });
+
+// group all routes which require login
