@@ -36,6 +36,12 @@ Route::get('/login', 'SessionsController@create');
 Route::get('/logout', 'SessionsController@destroy');
 Route::post('/login', 'SessionsController@store');
 
+Route::get('/admin/posts', 'PostsController@admin_list');
+Route::get('/admin/posts/create', 'PostsController@admin_post_create');
+Route::post('/admin/posts', 'PostsController@admin_post_store');
+Route::get('/admin/posts/{post}/edit', 'PostsController@admin_post_edit');
+Route::patch('/admin/posts/{post}', 'PostsController@admin_post_update');
+
 /*post actions / Resourcefull controller
 
     posts

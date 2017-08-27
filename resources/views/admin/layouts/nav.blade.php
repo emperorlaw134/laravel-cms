@@ -12,9 +12,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="#">Settings</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profile<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="#">Help</a>
             </li>
@@ -25,3 +30,9 @@
         </form>
     </div>
 </nav>
+
+
+
+
+
+

@@ -121,4 +121,67 @@ class PostsController extends Controller
 
         return redirect('/');
     }
+
+
+    /********** admin display list *************/
+
+    public function admin_list(Posts $posts)
+    {
+        $posts = $posts->all();
+
+        return view('admin.posts_admin.list', compact('posts'));
+    }
+
+
+    /******* admin create new post *************/
+
+    public function admin_post_create()
+    {
+        return view('posts.create');
+
+    }
+
+    public function admin_post_edit(Post $post)
+    {
+        return view('admin.posts_admin.edit', compact('post'));
+    }
+
+    public function admin_post_update(post $post)
+    {
+        $this->validate(request(), [
+            'title' => 'required|min:3',
+            'content' => 'required'
+        ]);
+
+        auth()->user()->publish(
+             $post->update()
+        );
+
+        session()->flash('message', 'Post successfully updated');
+
+        return redirect('/');
+    }
+
+    public function admin_post_store()
+    {
+
+
+        $this->validate(request(), [
+            'title' => 'required|min:3',
+            'content' => 'required'
+        ]);
+
+        auth()->user()->publish(
+            new Post(request(['title', 'content']))
+        );
+
+        session()->flash('message', 'Post successfully published');
+
+
+
+        //Refresh and stay on current page
+
+        return redirect()->back();
+    }
+
 }
