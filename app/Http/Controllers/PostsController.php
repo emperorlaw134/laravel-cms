@@ -95,16 +95,24 @@ class PostsController extends Controller
 //        $post->title = request('title');
 //        $post->content  = request('content');
 
+        $post = null; // set initial post var, will need this later
+
+        // check validation
         $this->validate(request(), [
             'title' => 'required|min:3',
             'content' => 'required'
         ]);
 
+        // if validation passed and user has permission create post
         auth()->user()->publish(
-            new Post(request(['title', 'content']))
+           $post = new Post(request(['title', 'content'])) // set and create post
         );
 
+        // success message
         session()->flash('message', 'Post successfully published');
+
+//        var_dump($post->id);
+
 
         /* mass assigning */
        /* Post::create([
@@ -119,7 +127,11 @@ class PostsController extends Controller
 
         //and then redirect to all posts
 
-        return redirect('/');
+//        var_dump($post);
+//        exit();
+
+        // redirect to the created posts edit page
+        return redirect()->route('post_edit', ['post' => $post->id]);
     }
 
 
@@ -173,9 +185,13 @@ class PostsController extends Controller
             'content' => 'required'
         ]);
 
-        auth()->user()->publish(
+         $post = auth()->user()->publish(
             new Post(request(['title', 'content']))
         );
+
+
+
+//        exit();
 
         session()->flash('message', 'Post successfully published');
 
@@ -183,7 +199,7 @@ class PostsController extends Controller
 
         //Refresh and stay on current page
 
-        return redirect()->back();
+        return redirect()->route('post_edit', ['post' => $post]);
     }
 
 }
