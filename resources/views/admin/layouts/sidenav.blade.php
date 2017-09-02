@@ -14,7 +14,7 @@
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Posts</a>
             <ul class="dropdown-menu" aria-labelledby="dLabel">
                 <li><a href="/admin/posts">View All</a></li>
-                <li><a href="#">Add New</a></li>
+                <li><a href="/admin/posts/create">Add New</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown">

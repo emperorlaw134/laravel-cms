@@ -137,7 +137,7 @@ class PostsController extends Controller
 
     public function admin_post_create()
     {
-        return view('posts.create');
+        return view('admin.posts_admin.create');
 
     }
 
@@ -148,18 +148,20 @@ class PostsController extends Controller
 
     public function admin_post_update(post $post)
     {
+        //check the request data is valid
         $this->validate(request(), [
             'title' => 'required|min:3',
             'content' => 'required'
         ]);
 
-        auth()->user()->publish(
-             $post->update()
-        );
 
+        // if request data is valid then update the post
+        $post->update(request(['title', 'content']));
+
+        // send flash message to notify user of successful update
         session()->flash('message', 'Post successfully updated');
 
-        return redirect('/');
+        return redirect()->back();
     }
 
     public function admin_post_store()

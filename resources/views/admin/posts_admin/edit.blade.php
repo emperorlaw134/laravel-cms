@@ -3,10 +3,10 @@
 @section('content')
 <div class="col-sm-8 blog-main">
 
-    <h1>Create a Post</h1>
+    <h1>Edit a Post</h1>
     <hr>
 
-    <form action="/admin/posts/{{$post->id}}">
+    <form method="post" action="/admin/posts/{{$post->id}}">
 
 
 
@@ -33,6 +33,28 @@
         @include('layouts.errors')
 
     </form>
+
+    @if ($flash = session('message'))
+
+        <p>this is a test</p>
+
+        <div id="flash-message" class="alert alert-success" role="alert">
+            {{ $flash }}
+        </div>
+
+        <script>
+
+
+            window.setTimeout(function() {
+                $("#flash-message").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).remove();
+                });
+            }, 3000);
+
+            console.log("#flash-message");
+        </script>
+
+    @endif
 
 
 
