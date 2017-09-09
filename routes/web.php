@@ -32,15 +32,17 @@ Route::get('/posts/tags/{tag}', 'TagsController@index');
 
 Route::get('/register', 'RegistrationController@create');
 Route::post('/register', 'RegistrationController@store');
-Route::get('/login', 'SessionsController@create');
+Route::get('/login', 'SessionsController@create')->name('login');
 Route::get('/logout', 'SessionsController@destroy');
 Route::post('/login', 'SessionsController@store');
 
 Route::get('/admin/posts', 'PostsController@admin_list');
 Route::get('/admin/posts/create', 'PostsController@admin_post_create');
-Route::post('/admin/posts', 'PostsController@admin_post_store');
+Route::post('/admin/posts', 'PostsController@admin_post_store'); // make sure view is calling this store function
 Route::get('/admin/posts/{post}/edit', 'PostsController@admin_post_edit')->name('post_edit');
 Route::patch('/admin/posts/{post}', 'PostsController@admin_post_update');
+
+Route::get('/admin/pages', 'PagesController@admin_list');
 
 /*post actions / Resourcefull controller
 

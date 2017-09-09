@@ -67,7 +67,7 @@ class PostsController extends Controller
         if (!Auth::check())
         {
 //            exit('here');
-            return view('sessions.create');
+            return redirect()->route('login');
 
         }
         return view('admin.dash');
@@ -179,27 +179,26 @@ class PostsController extends Controller
     public function admin_post_store()
     {
 
+        $post = null; // set initial post var, will need this later
 
+        // check validation
         $this->validate(request(), [
             'title' => 'required|min:3',
             'content' => 'required'
         ]);
 
-         $post = auth()->user()->publish(
-            new Post(request(['title', 'content']))
+        // if validation passed and user has permission create post
+        auth()->user()->publish(
+            $post = new Post(request(['title', 'content'])) // set and create post
         );
 
-
-
-//        exit();
-
+        // success message
         session()->flash('message', 'Post successfully published');
 
 
 
-        //Refresh and stay on current page
-
-        return redirect()->route('post_edit', ['post' => $post]);
+        // redirect to the created posts edit page
+        return redirect()->route('post_edit', ['post' => $post->id]);
     }
 
 }

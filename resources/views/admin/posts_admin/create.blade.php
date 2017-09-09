@@ -6,7 +6,7 @@
         <h1>Create a Post</h1>
         <hr>
 
-        <form method="post" action="/posts">
+        <form method="post" action="/admin/posts">
             {{ csrf_field() }}
 
             <div class="form-group">
