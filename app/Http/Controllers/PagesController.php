@@ -31,20 +31,20 @@ class PagesController extends Controller
     }
 
 
-    /******* admin create new post *************/
+    /******* admin create new page *************/
 
-    public function admin_post_create()
+    public function admin_page_create()
     {
-        return view('admin.posts_admin.create');
+        return view('admin.pages_admin.create');
 
     }
 
-    public function admin_post_edit(Page $page)
+    public function admin_page_edit(Page $page)
     {
-        return view('admin.posts_admin.edit', compact('page'));
+        return view('admin.pages_admin.edit', compact('page'));
     }
 
-    public function admin_post_update(Page $page)
+    public function admin_page_update(Page $page)
     {
         //check the request data is valid
         $this->validate(request(), [
@@ -62,28 +62,31 @@ class PagesController extends Controller
         return redirect()->back();
     }
 
-    public function admin_post_store()
+    public function admin_page_store()
     {
 
         $page = null; // set initial post var, will need this later
 
         // check validation
+
+        //var_dump(request());
+       // exit();
         $this->validate(request(), [
             'title' => 'required|min:3',
             'content' => 'required'
         ]);
 
         // if validation passed and user has permission create post
-        auth()->user()->publish(
-            $page = new Page(request(['title', 'content'])) // set and create post
+        auth()->user()->publish_page(
+            $page = new Page(request(['title', 'content'])) // set and create page
         );
 
         // success message
-        session()->flash('message', 'Post successfully published');
+        session()->flash('message', 'Page successfully published');
 
 
 
         // redirect to the created posts edit page
-        return redirect()->route('post_edit', ['page' => $page->id]);
+        return redirect()->route('admin');
     }
 }

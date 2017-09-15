@@ -22,7 +22,7 @@
             <td> {{ $page->title }}</td>
             <td>ipsum</td>
             <td>dolor</td>
-            <td><a href ="/admin/posts/{{ $page->id }}/edit">edit</a></td>
+            <td><a href ="/admin/pages/{{ $page->id }}/edit">edit</a></td>
         </tr>
 
     @endforeach

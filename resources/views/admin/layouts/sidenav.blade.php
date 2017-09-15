@@ -6,8 +6,8 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
             <ul class="dropdown-menu">
-                <li><a href="#">View All</a></li>
-                <li><a href="#">Add New</a></li>
+                <li><a href="/admin/pages">View All</a></li>
+                <li><a href="/admin/pages/create">Add New</a></li>
             </ul>
         </li>
         <li class="nav-item dropdown">

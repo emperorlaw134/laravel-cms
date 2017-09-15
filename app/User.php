@@ -43,6 +43,23 @@ class User extends Authenticatable
 //        ]);
     }
 
+
+    public function pages()
+    {
+        return $this->hasMany(Page::class);
+    }
+
+    public function publish_page(Page $page)
+    {
+        $this->posts()->save($page);
+
+//        Post::create([
+//            'title' => request('title'),
+//            'content' => request('content'),
+//            'user_id' => auth()->id()
+//        ]);
+    }
+
     // set password to send as encrypt
     public function setPasswordAttribute($password)
     {
