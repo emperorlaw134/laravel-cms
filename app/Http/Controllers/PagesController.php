@@ -86,7 +86,7 @@ class PagesController extends Controller
 
 
 
-        // redirect to the created posts edit page
-        return redirect()->route('admin');
+        // redirect to the created pages edit page
+        return redirect()->route('page_edit', ['page' => $page->id]);
     }
 }

@@ -1,3 +1,4 @@
+@include('admin.layouts.tinymce')
 @extends('admin.dash')
 
 @section('content')
