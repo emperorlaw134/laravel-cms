@@ -29,9 +29,19 @@
         <div class="form-group">
 
             <button type="submit" class="btn btn-primary">Update</button>
+
         </div>
 
         @include('layouts.errors')
+
+    </form>
+
+    <form method="post" action="/posts/{{ $post->id }}">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <div class="form-group">
+            <button class="btn btn-danger">Delete</button>
+        </div>
 
     </form>
 

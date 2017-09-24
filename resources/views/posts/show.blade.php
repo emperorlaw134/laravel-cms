@@ -20,7 +20,7 @@
             @endif
 
 
-        {{ $post->content }}
+        {!! $post->content !!}
             <hr>
 
             <div class="comments">

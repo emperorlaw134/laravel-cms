@@ -47,6 +47,7 @@ Route::get('/admin/pages/create', 'PagesController@admin_page_create');
 Route::post('/admin/pages', 'PagesController@admin_page_store'); // make sure view is calling this store function
 Route::get('/admin/pages/{page}/edit', 'PagesController@admin_page_edit')->name('page_edit');
 Route::patch('/admin/pages/{page}', 'PagesController@admin_page_update');
+Route::delete('/posts/{id}', 'PostsController@destroy');
 
 /*post actions / Resourcefull controller
 

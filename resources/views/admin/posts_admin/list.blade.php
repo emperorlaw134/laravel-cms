@@ -21,8 +21,16 @@
             <td>{{ $post->id }}</td>
             <td> {{ $post->title }}</td>
             <td>ipsum</td>
-            <td>dolor</td>
-            <td><a href ="/admin/posts/{{ $post->id }}/edit">edit</a></td>
+            <td>
+                <form method="post" action="/posts/{{ $post->id }}">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+
+                    <button class="btn btn-sm btn-danger">Delete</button>
+
+                </form>
+                    </td>
+                    <td><a href ="/admin/posts/{{ $post->id }}/edit">edit</a></td>
         </tr>
 
     @endforeach
