@@ -36,18 +36,19 @@ Route::get('/login', 'SessionsController@create')->name('login');
 Route::get('/logout', 'SessionsController@destroy');
 Route::post('/login', 'SessionsController@store');
 
-Route::get('/admin/posts', 'PostsController@admin_list');
+Route::get('/admin/posts', 'PostsController@admin_list')->name('post_list');
 Route::get('/admin/posts/create', 'PostsController@admin_post_create');
 Route::post('/admin/posts', 'PostsController@admin_post_store'); // make sure view is calling this store function
 Route::get('/admin/posts/{post}/edit', 'PostsController@admin_post_edit')->name('post_edit');
 Route::patch('/admin/posts/{post}', 'PostsController@admin_post_update');
 /***** admin Pages section *******/
-Route::get('/admin/pages', 'PagesController@admin_list');
+Route::get('/admin/pages', 'PagesController@admin_list')->name('page_list');
 Route::get('/admin/pages/create', 'PagesController@admin_page_create');
 Route::post('/admin/pages', 'PagesController@admin_page_store'); // make sure view is calling this store function
 Route::get('/admin/pages/{page}/edit', 'PagesController@admin_page_edit')->name('page_edit');
 Route::patch('/admin/pages/{page}', 'PagesController@admin_page_update');
 Route::delete('/posts/{id}', 'PostsController@destroy');
+Route::delete('/pages/{id}', 'PagesController@destroy');
 
 /*post actions / Resourcefull controller
 

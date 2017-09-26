@@ -38,6 +38,15 @@
 
         </form>
 
+        <form method="post" action="/pages/{{ $page->id }}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+            <div class="form-group">
+                <button class="btn btn-danger">Delete</button>
+            </div>
+
+        </form>
+
         @if ($flash = session('message'))
 
             <p>this is a test</p>

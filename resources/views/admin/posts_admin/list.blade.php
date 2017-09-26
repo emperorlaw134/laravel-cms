@@ -28,12 +28,20 @@
 
                     <button class="btn btn-sm btn-danger">Delete</button>
 
+
+
                 </form>
                     </td>
                     <td><a href ="/admin/posts/{{ $post->id }}/edit">edit</a></td>
         </tr>
 
     @endforeach
+
+    @if( $flash = session('message'))
+        <div id="flash-message" class="alert alert-danger" role="alert">
+            {{ $flash }}
+        </div>
+    @endif
 
     </tbody>
 @endsection

@@ -89,4 +89,13 @@ class PagesController extends Controller
         // redirect to the created pages edit page
         return redirect()->route('page_edit', ['page' => $page->id]);
     }
+
+    // delete page by id
+    public function destroy($id)
+    {
+        Page::findOrFail($id)->delete();
+        session()->flash('message', 'Page Deleted with ID of : ' . $id);
+        return redirect()->route('page_list');
+    }
+
 }

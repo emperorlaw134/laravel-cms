@@ -208,7 +208,9 @@ class PostsController extends Controller
     {
 
         Post::findOrFail($id)->delete();
-        return redirect()->route('admin');
+
+        session()->flash('message', 'Post Deleted with ID of : ' .$id);
+        return redirect()->route('post_list');
 
     }
 

@@ -21,11 +21,25 @@
             <td>{{ $page->id }}</td>
             <td> {{ $page->title }}</td>
             <td>ipsum</td>
-            <td>dolor</td>
+            <td>
+                <form method="post" action="/pages/{{ $page->id }}">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+
+            </td>
             <td><a href ="/admin/pages/{{ $page->id }}/edit">edit</a></td>
         </tr>
 
     @endforeach
+
+    @if( $flash = session('message'))
+        <div id="flash-message" class="alert alert-danger" role="alert">
+            {{ $flash }}
+        </div>
+    @endif
 
     </tbody>
 @endsection
