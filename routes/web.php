@@ -66,18 +66,18 @@ Route::delete('/pages/{id}', 'PagesController@destroy');
 
 Route::post('/posts', 'PostsController@store');
 
-Route::get('/old', function () {
+/*Route::get('/old', function () {
     /*$tasks = [
         'create a user',
         'create a page',
         'create a post'
-    ];*/
+    ];****
 
     $tasks = DB::table('tasks')->get(); // get all tasks
 
     return view('welcome', compact('tasks'));
 //    return $tasks;
-});
+});*/
 Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/{task}', 'TasksController@show');
 
@@ -105,9 +105,9 @@ Route::get('/tasks/{task}', function ($id)
     return view('tasks.show', compact('task'));
 });*/
 
-Route::get('about', function()
+/*Route::get('about', function()
 {
     return view('about');
-});
+});*/
 
 // group all routes which require login
